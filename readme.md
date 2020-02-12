@@ -1,0 +1,1 @@
+# A WordPress theme with the bare essentials.
