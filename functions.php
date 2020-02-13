@@ -12,11 +12,32 @@
     }
 
 
+    function blankpress_scripts() {
+
+        //wp_register_script( $handle, $src, $deps, $ver, $in_footer );
+        // Goes in header
+        wp_register_script( 'feather_icons', 'https://unpkg.com/feather-icons', array(), '4.26.0', false);
+
+
+        // Goes in footer
+
+        wp_register_script( 'blankpress_jquery', 'https://code.jquery.com/jquery-3.4.1.js', array(), '3.4.1', true);
+        wp_register_script( 'blankpress_scripts', get_template_directory_uri() .  '/js/script.js', array('jquery'), '0.0', true);
+
+        // wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
+        wp_enqueue_script( 'feather_icons' );
+        wp_enqueue_script( 'blankpress_jquery' );
+        wp_enqueue_script( 'blankpress_scripts' );
+
+    }
+
+
     // Add Actions
-    // Add Custom Scripts to wp_head
-    // add_action( 'wp_enqueue_scripts', 'gogo_header_scripts' );
+    add_action( 'wp_enqueue_scripts', 'blankpress_scripts' );
+
     // Add Theme Stylesheet
     add_action( 'wp_enqueue_scripts', 'blankpress_styles' );
+
     // Add Menu
     // add_action( 'init', 'register_gogo_menu' );
 
