@@ -4,18 +4,13 @@
 <main id="site-content" role="main">
 
     <?php
-        if ( have_posts() ) {
+        if ( have_posts() ) :
 
-            // Load posts loop.
-            while ( have_posts() ) {
-                the_post();
-            }
-
-        } else {
+            while ( have_posts() ) : the_post();
 
 
-
-        }
+            endwhile;
+        endif;
         ?>
 
 </main>
