@@ -197,11 +197,21 @@ i {}
 *
 *************************/
 
+
+
+svg,
+img,
+embed,
+object {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
 svg, img {
     max-width: 100%;
     height: auto;
 }
-
 
 img {
 
@@ -211,12 +221,19 @@ svg {
 
 }
 
-figure {
 
+figure {
+    display: block;
+    margin: 0;
 }
 
 video {
+    display: block;
+}
 
+iframe {
+    display: block;
+    max-width: 100%;
 }
 
 
