@@ -4,6 +4,13 @@
  * 1. Init Menu
  */
 
+    function theme_features() {
+        add_theme_support(
+            'title-tag'
+        );
+    }
+
+    add_action( 'after_theme_setup', 'theme_features' )
 
  /***
   * Resources:
