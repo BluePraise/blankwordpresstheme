@@ -50,8 +50,7 @@
 /**
  * Disable the emoji's
  */
-function disable_emojis()
-{
+function disable_emojis() {
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('admin_print_scripts', 'print_emoji_detection_script');
     remove_action('wp_print_styles', 'print_emoji_styles');
@@ -74,8 +73,7 @@ add_action('init', 'disable_emojis');
  * @param array $plugins
  * @return array Difference betwen the two arrays
  */
-function disable_emojis_tinymce($plugins)
-{
+function disable_emojis_tinymce($plugins) {
     if (is_array($plugins)) {
         return array_diff($plugins, array('wpemoji'));
     } else {
@@ -90,8 +88,7 @@ function disable_emojis_tinymce($plugins)
  * @param string $relation_type The relation type the URLs are printed for.
  * @return array Difference betwen the two arrays.
  */
-function disable_emojis_remove_dns_prefetch($urls, $relation_type)
-{
+function disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     if ('dns-prefetch' == $relation_type) {
         /** This filter is documented in wp-includes/formatting.php */
         $emoji_svg_url = apply_filters(
@@ -120,6 +117,16 @@ function wpb_remove_version() {
     return '';
 }
 add_filter('the_generator', 'wpb_remove_version');
+
+
+/*Contact form 7 remove span*/
+add_filter('wpcf7_form_elements', function($content) {
+    $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+
+    $content = str_replace('<br />', '', $content);
+
+    return $content;
+});
 
 
 // allow svg upload
