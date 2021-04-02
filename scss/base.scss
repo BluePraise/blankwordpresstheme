@@ -1,0 +1,75 @@
+
+
+/*************************
+*
+* BASE ELEMENTS
+*
+*************************/
+
+/* global box-sizing */
+
+*,
+*:after,
+*:before {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    width: 100%;
+    height: 100%;
+}
+
+html, body {
+
+}
+
+header {
+
+}
+
+main {
+
+}
+
+section {
+
+}
+
+aside {
+
+}
+
+footer {
+
+}
+
+ul {
+
+}
+
+ol {
+
+}
+
+li {
+
+}

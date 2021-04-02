@@ -1,64 +1,3 @@
-
-html,
-body {
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-address,
-big,
-cite,
-code,
-em,
-font,
-img,
-small,
-strike,
-sub,
-sup,
-li,
-ol,
-ul,
-fieldset,
-form,
-label,
-legend,
-button,
-table,
-caption,
-tr,
-th,
-td {
-    border: none;
-    font-size: inherit;
-    line-height: inherit;
-    margin: 0;
-    padding: 0;
-    text-align: inherit;
-}
-
-blockquote::before,
-blockquote::after {
-    content: "";
-}
-
-
-/*************************
-*
-* BASE ELEMENTS
-*
-*************************/
-
-/* global box-sizing */
 /*
     Theme Name: Blank Wordpress Theme
     Author: Magalie Chetrit
@@ -69,74 +8,8 @@ blockquote::after {
     License URI: #
 
 */
-
-
-*,
-*:after,
-*:before {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-
-html {
-    scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-}
-
-body {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    width: 100%;
-    height: 100%;
-}
-
-html, body {
-
-}
-
-header {
-
-}
-
-main {
-
-}
-
-section {
-
-}
-
-aside {
-
-}
-
-footer {
-
-}
-
-ul {
-
-}
-
-ol {
-
-}
-
-li {
-
-}
-
+@import 'reset.scss';
+@import 'base.scss';
 
 /*************************
 *
@@ -144,7 +17,7 @@ li {
 *
 *************************/
 
-h1, h2, h3, h4, h5, {
+h1, h2, h3, h4, h5 {
 
 }
 
