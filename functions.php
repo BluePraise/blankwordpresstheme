@@ -4,48 +4,60 @@
  * 1. Init Menu
  */
 
-    function theme_features() {
-        add_theme_support(
-            'title-tag'
-        );
-    }
+function theme_features() {
+    add_theme_support(
+        'title-tag'
+    );
+}
 
-    add_action( 'after_theme_setup', 'theme_features' )
+add_action( 'after_theme_setup', 'theme_features' );
 
  /***
   * Resources:
   *  https://www.wpbeginner.com/wp-tutorials/25-extremely-useful-tricks-for-the-wordpress-functions-file/
   */
-    // Load styles
-    function blankpress_styles() {
-
-            // Custom CSS
-            wp_register_style( 'blankpress', get_template_directory_uri() . '/style.css' );
-
-            // Register CSS
-            wp_enqueue_style( 'blankpress' );
-
+ /**
+ * Dequeue a lot of css
+ */
+function blankttheme_dequeue_style()
+{
+    if(!is_admin()) {
+        wp_dequeue_style('dashicons-css');
+        wp_deregister_style('dashicons-css');
+        wp_dequeue_style('wp-block-library-theme');
+	    wp_deregister_style('wp-block-library-theme');
+        wp_dequeue_style('storefront-gutenberg-blocks');
+	    wp_deregister_style('storefront-gutenberg-blocks');
+        wp_dequeue_style('wp-block-library');
+	    wp_deregister_style('wp-block-library');
     }
+}
+add_action('wp_enqueue_scripts', 'blankttheme_dequeue_style', 999);
 
 
-    function blankpress_scripts() {
+function blanktheme_styles_scripts()
+{
+	wp_register_style('blank-styles', get_stylesheet_directory_uri() . '/style.css');
+	wp_register_style('animate', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+	wp_enqueue_style('blank-styles');
+	wp_enqueue_style('animate');
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('jquery-ui');
+	wp_enqueue_script('masonry');
 
-        //wp_register_script( $handle, $src, $deps, $ver, $in_footer );
-        // Goes in header
-        wp_register_script( 'feather_icons', 'https://unpkg.com/feather-icons', array(), '4.26.0', false);
+	wp_enqueue_script('blank-script', get_theme_file_uri() . '/js/script.js', [], null, true);
 
-
-        // Goes in footer
-
-        wp_register_script( 'blankpress_jquery', 'https://code.jquery.com/jquery-3.4.1.js', array(), '3.4.1', true);
-        wp_register_script( 'blankpress_scripts', get_template_directory_uri() .  '/js/script.js', array('jquery'), '0.0', true);
-
-        // wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
-        wp_enqueue_script( 'feather_icons' );
-        wp_enqueue_script( 'blankpress_jquery' );
-        wp_enqueue_script( 'blankpress_scripts' );
-
-    }
+	// $ajax_url = admin_url('admin-ajax.php');
+	// wp_localize_script(
+	// 	'artezpress-script',
+	// 	'artez_object',
+	// 	array(
+	// 		'ajax_url' => $ajax_url,
+	// 		'nonce' => wp_create_nonce('ajax-nonce')
+	// 	)
+	// );
+}
+add_action('wp_enqueue_scripts', 'blanktheme_styles_scripts');
 
 /**
  * Disable the emoji's
@@ -138,12 +150,6 @@ add_filter('upload_mimes', 'my_myme_types');
 
 
 
-// Add Actions
-add_action( 'wp_enqueue_scripts', 'blankpress_scripts' );
-
-// Add Theme Stylesheet
-add_action( 'wp_enqueue_scripts', 'blankpress_styles' );
-
 // Add Menu
 // add_action( 'init', 'register_blankpress_menu' );
 
@@ -161,7 +167,7 @@ remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
 
 function remove_footer_admin () {
 
-echo 'Need help? <a href="http://www.magalielinda.me" target="_blank">Ask Maggie.</a> | Phone: <a href="tel://0031652841683">0652841683</a></p>';
+    echo 'Need help? <a href="http://www.magalielinda.me" target="_blank">Ask Maggie.</a> | Phone: <a href="tel://0031652841683">0652841683</a></p>';
 
 }
 add_filter('admin_footer_text', 'remove_footer_admin');
